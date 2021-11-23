@@ -19,6 +19,7 @@
             <p>
                 Cards: {{ cards.length }}
                 Charcounter: {{ amountOfChars }}
+                Average Chars: {{ averageCharsAmount }}
             </p>
             <a href="#" class="btn btn-primary" v-on:click="addCard">Add Card</a>
         </div>
@@ -50,13 +51,11 @@
 
                     return this.cards.map(c => c.content.length).reduce((pv, cv) => pv + cv)
                 },
-            },
-            computed: {
-                amountOfChars() {
-                    if(this.cards.length === 0) return 0
+                averageCharsAmount() {
+                    if(this.amountOfChars === 0) return 0
 
-                    return this.cards.map(c => c.content.length).reduce((pv, cv) => pv + cv)
-                },
+                    return this.amountOfChars / this.cards.length
+                }
             },
             methods: {
                 addCard() {
