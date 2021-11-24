@@ -6,7 +6,6 @@
 
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <script src="./js/vue.js"></script>
-    <script src="./js/card.js"></script>
 </head>
 <body class="container">
     <h1>Hello World</h1>
@@ -27,7 +26,7 @@
 
         <div class="row">
             <div class="col-6" v-for="(card, i) of cards" :key="card.id">
-                <card></card>
+                <card :css-class="i % 2 === 0 ? 'bg-primary' : 'bg-secondary'"></card>
             </div>
         </div>
     </div>
@@ -38,18 +37,6 @@
                 return {
                     message: 'Hello Vue!',
                     cards: [],
-                }
-            },
-            computed: {
-                amountOfChars() {
-                    if(this.cards.length === 0) return 0
-
-                    return this.cards.map(c => c.content.length).reduce((pv, cv) => pv + cv)
-                },
-                averageCharsAmount() {
-                    if(this.amountOfChars === 0) return 0
-
-                    return this.amountOfChars / this.cards.length
                 }
             },
             computed: {
