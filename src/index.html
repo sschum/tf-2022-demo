@@ -57,18 +57,6 @@
                     return this.amountOfChars / this.cards.length
                 }
             },
-            computed: {
-                amountOfChars() {
-                    if(this.cards.length === 0) return 0
-
-                    return this.cards.map(c => c.content.length).reduce((pv, cv) => pv + cv)
-                },
-                averageCharsAmount() {
-                    if(this.amountOfChars === 0) return 0
-
-                    return this.amountOfChars / this.cards.length
-                }
-            },
             methods: {
                 addCard() {
                     this.cards.push({
@@ -78,6 +66,11 @@
                 },
                 removeCard(i) {
                     this.cards.splice(i, 1)
+                }
+            },
+            watch: {
+                message(newValue) {
+                    console.log("Message changed: ", newValue)
                 }
             }
         })
