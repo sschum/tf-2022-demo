@@ -3,7 +3,7 @@
 SCRIPT_PATH=$(realpath "$0")
 SCRIPT_HOME=$(dirname "$SCRIPT_PATH")
 
-CONTAINER_NAME=tf-2021-demo
+CONTAINER_NAME=tf-2022-demo
 
 docker rm -f ${CONTAINER_NAME} > /dev/null 2>&1
 docker run -d --name ${CONTAINER_NAME} -v ${SCRIPT_HOME}/src:/usr/share/nginx/html/ -p 1312:80 nginx:alpine > /dev/null
